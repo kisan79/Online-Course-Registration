@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .forms import AdminLoginForm
 
-# Create your views here.
+
 def admin_login(request):
-    return HttpResponse('Admin Login page')
+    '''The FBV returns a HttpResponse with AdminLoginForm'''
+    return render(request,template_name="myadmin/admin_login.html",context={'AdminLoginForm':AdminLoginForm()})
