@@ -4,5 +4,18 @@
 
 <!--Page Body Here-->
 {% block body %}
-    {{ AdminLoginForm.as_p }}
+    <div class="container my-5">
+        <div class="row text-center">
+            <div class="offset-md-3 col-md-6 bg-light p-4">
+                <h3 class="bg-success">ADMIN LOGIN </h3>
+                <form class="form-group my-4 p-4" action="{% url 'admin_login_check' %}" method="post">
+                    {{ AdminLoginForm.as_p }}
+                    <div class="btn-group btn-toolbar my-3 p-4">
+                        <button type="submit" class="btn btn-outline-success">LOGIN</button>
+                        <button type="reset" class="btn btn-outline-danger">RESET</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock %}

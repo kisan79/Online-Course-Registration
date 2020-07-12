@@ -15,22 +15,36 @@
 
     <!--Embeded Style-->
     {% block style %}
-        <style></style>
+        <style>
+            body{
+                font-family: 'Indie Flower', cursive;
+            }
+        </style>
     {% endblock style %}
 
 
   </head>
-  <body>
-    <h1 class="text-center bg-info text-white">E-Learn</h1>
+  <body class="container-fluid">
+    <section id="header">
+        {% block header %}
+            <h1 class="text-center bg-info text-white">E-Learn</h1>
+        {% endblock header %}
+    </section>
     {% block body %}
 
     {% endblock body %}
 
 
 
-    <div class="footer">
-        <i>&copy;Copyrights | 2020 | By Kisan Kumar Behera</i>
-    </div>
+    <section class="container-fluid">
+        <div class="row bg-info">
+            <div class="offset-4 col-6">
+                <strong class="text-center text-white">
+                    <i>&copy;Copyrights | 2020 | By Kisan Kumar Behera</i>
+                </strong>
+            </div>
+        </div>
+    </section>
 
 
 
