@@ -15,6 +15,10 @@
                         <button type="submit" class="btn btn-outline-success">LOGIN</button>
                         <button type="reset" class="btn btn-outline-danger">RESET</button>
                     </div>
+                    {% for msg in messages %}
+                        <label class="alert alert-danger">{{ msg }}</label>
+                    {% endfor %}
+
                 </form>
             </div>
         </div>
