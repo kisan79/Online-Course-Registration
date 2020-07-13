@@ -1,0 +1,31 @@
+{% extends 'myadmin/base.html' %}
+{% block title%}Success{% endblock title %}
+{% block style %}
+
+{% endblock style %}
+
+
+{% block common %}
+
+    {% if request.session.status %}
+
+        {% include 'myadmin/navbar.html' %}
+        <section id="course" class="container">
+            <div class="row">
+                <div class="offset-1 col-5">CourseType Form</div>
+                <div class="offset-1 col-5">Add Course Form</div>
+            </div>
+        </section>
+
+    {% else %}
+
+
+        {{ block.super }}
+        <div class="jumbotron jumbotron-fluid text-center">
+            <h2 class="display-4">Session Expired !!!</h2>
+            <a href="{% url 'myadmin:admin_login' %}" class="btn btn-warning">Login Again</a>
+        </div>
+
+    {% endif %}
+
+{% endblock common %}

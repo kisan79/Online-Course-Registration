@@ -9,6 +9,8 @@ def admin_login(request):
     '''The FBV returns a HttpResponse with AdminLoginForm'''
     return render(request,template_name="myadmin/admin_login.html",context={'AdminLoginForm':AdminLoginForm()})
 
+# Admin Login Check
+
 
 def admin_login_check(request):
     username = request.POST['username']
@@ -21,6 +23,8 @@ def admin_login_check(request):
         messages.error(request,"Invalid Credentials")
         return redirect('myadmin:admin_login')
 
+# Admin Login Success
+
 
 def admin_login_success(request):
 
@@ -30,7 +34,17 @@ def admin_login_success(request):
     except KeyError:
         return render(request,"myadmin/login_success.html")
 
+# Admin Logout
+
 
 def admin_logout(request):
     del request.session['status']
     return redirect('myadmin:admin_login')
+
+
+def add_course(request):
+    try:
+        obj = AdminLoginModel.objects.get(mobile= request.session['status'])
+        return render(request,"myadmin/add_course.html",context={"admin_data":obj})
+    except KeyError:
+        return render(request, "myadmin/login_success.html")
