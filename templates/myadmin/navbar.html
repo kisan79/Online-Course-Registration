@@ -8,11 +8,11 @@
             </button>
 
             <ul class="collapse navbar-nav navbar-collapse" id="navbarContent">
-                <li class="nav-item"><a class="nav-link">Admin Name</a></li>
+                <li class="nav-item"><a class="nav-link">{{ admin_data.username|capfirst }}</a></li>
                 <li class="nav-item"><a class="nav-link">Schedule New Class</a></li>
                 <li class="nav-item"><a class="nav-link">New Batches</a></li>
                 <li class="nav-item"><a class="nav-link">Add Courses</a></li>
                 <li class="nav-item"><a class="nav-link">View Courses</a></li>
-                <li class="nav-item"><a class="nav-link">Logout</a></li>
+                <li class="nav-item"><a href="{% url 'myadmin:admin_logout' %}" class="nav-link">Logout</a></li>
             </ul>
         </nav>

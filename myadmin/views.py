@@ -23,4 +23,14 @@ def admin_login_check(request):
 
 
 def admin_login_success(request):
-    return render(request,"myadmin/login_success.html")
+
+    try:
+        obj = AdminLoginModel.objects.get(mobile= request.session['status'])
+        return render(request,"myadmin/login_success.html",context={"admin_data":obj})
+    except KeyError:
+        return render(request,"myadmin/login_success.html")
+
+
+def admin_logout(request):
+    del request.session['status']
+    return redirect('myadmin:admin_login')

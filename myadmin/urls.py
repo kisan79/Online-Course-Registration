@@ -7,4 +7,5 @@ urlpatterns = [
     path('',views.admin_login,name="admin_login"),
     path('admin_login_check/',views.admin_login_check,name="admin_login_check"),
     path('login_success/',views.admin_login_success,name="login_success"),
+    path('admin_logout/',views.admin_logout,name="admin_logout"),
 ]
