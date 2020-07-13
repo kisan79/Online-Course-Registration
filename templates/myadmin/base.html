@@ -24,17 +24,31 @@
 
 
   </head>
+
+
   <body class="container-fluid">
+
+
+  {% block common %}
+
+
     <section id="header">
-        {% block header %}
             <h1 class="text-center bg-info text-white">E-Learn</h1>
-        {% endblock header %}
     </section>
-    {% block body %}
-
-    {% endblock body %}
 
 
+  {% endblock common %}
+
+
+
+  {% block body %}
+
+  {% endblock body %}
+
+
+
+
+    <!--Footer Section Start Here-->
 
     <section class="container-fluid">
         <div class="row bg-info">
@@ -46,6 +60,7 @@
         </div>
     </section>
 
+    <!--Footer Section End Here-->
 
 
 
