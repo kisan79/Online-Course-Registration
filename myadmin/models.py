@@ -34,6 +34,8 @@ class CourseType(models.Model):
     idno = models.AutoField(primary_key=True)
     name = models.CharField(max_length=40, unique=True)
     pic = models.ImageField(blank=True, upload_to="coursetype_logo/")
+    def __str__(self):
+        return self.name
 
 # Course Model
 
