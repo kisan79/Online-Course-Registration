@@ -11,9 +11,45 @@
 
         {% include 'myadmin/navbar.html' %}
         <section id="course" class="container">
-            <div class="row">
-                <div class="offset-1 col-5">CourseType Form</div>
-                <div class="offset-1 col-5">Add Course Form</div>
+            <div class="row text-center my-5 p-4">
+
+                {% for msg in messages %}
+                    <div class="offset-3 col-6">
+                        <label class="alert alert-success">{{ msg }}</label>
+                    </div>
+                {% endfor %}
+
+                <!--Course-Type Form Start Here-->
+
+                <div class="offset-1 col-5 bg-light p-4">
+                    <h3 class="bg-warning text-info">Add Course-Type</h3>
+                    <form class="form-group my-5" action="{% url 'myadmin:save_course_type' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ CourseTypeForm.as_p }}
+                        <div class="btn-group btn-toolbar">
+                            <button type="submit" class="btn btn-success">ADD</button>
+                            <button type="reset" class="btn btn-danger">RESET</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!--Course-Type Form End Here-->
+
+                <!--Course Form Start Here-->
+
+                <div class="offset-1 col-5 bg-light p-4">
+                    <h3 class="bg-warning text-info">Add Course</h3>
+                    <form class="form-group my-5" action="#" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ CourseForm.as_p }}
+                        <div class="btn-group btn-toolbar">
+                            <button type="submit" class="btn btn-success">ADD</button>
+                            <button type="reset" class="btn btn-danger">RESET</button>
+                        </div>
+                    </form>
+                </div>
+                <!--Course Form End Here-->
+
             </div>
         </section>
 

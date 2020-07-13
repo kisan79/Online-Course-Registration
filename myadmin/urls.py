@@ -10,5 +10,6 @@ urlpatterns = [
     path('admin_logout/',views.admin_logout,name="admin_logout"),
 
     #Admin Course Operations
-    path('add_course/',views.add_course,name = "add_course")
+    path('add_course/',views.add_course,name = "add_course"),
+    path('save_course_type/',views.add_course,name = "save_course_type"),
 ]
