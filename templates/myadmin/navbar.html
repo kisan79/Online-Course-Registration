@@ -10,7 +10,7 @@
             <ul class="collapse navbar-nav navbar-collapse" id="navbarContent">
                 <li class="nav-item"><a class="nav-link">{{ admin_data.username|capfirst }}</a></li>
                 <li class="nav-item"><a href="{% url 'myadmin:schedule_new_batches' %}" class="nav-link">Schedule New Batches</a></li>
-                <li class="nav-item"><a class="nav-link">New Batches</a></li>
+                <li class="nav-item"><a href="{% url 'myadmin:view_scheduled_batches' %}" class="nav-link">New Batches</a></li>
                 <li class="nav-item"><a href="{% url 'myadmin:add_course' %}" class="nav-link">Add Courses</a></li>
                 <li class="nav-item"><a class="nav-link">View Courses</a></li>
                 <li class="nav-item"><a href="{% url 'myadmin:faculty' %}" class="nav-link">Faculty</a></li>

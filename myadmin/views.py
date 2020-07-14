@@ -99,6 +99,13 @@ class ScheduleNewBatch(View):
         else:
             return render(request,"myadmin/schedule_new_batches.html",context={"ScheduleBatchForm":sbf})
 
+class ViewScheduledBatches(View):
+    def get(self,request):
+        context = {
+            "view":ScheduleBatch.objects.all()
+        }
+        return render(request,"myadmin/view_scheduled_batches.html",context=context)
+
 
 # Faculty Operation
 

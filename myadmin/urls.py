@@ -1,5 +1,4 @@
 from django.urls import path
-
 from myadmin import views
 
 app_name = 'myadmin'
@@ -16,6 +15,7 @@ urlpatterns = [
 
     # Admin Schedule Operations
     path('schedule_new_batches/',views.ScheduleNewBatch.as_view(),name = "schedule_new_batches"),
+    path('view_scheduled_batches/',views.ViewScheduledBatches.as_view(),name = "view_scheduled_batches"),
 
     # Admin Faculty operation
     path('faculty/',views.FacultyOperation.as_view(),name ="faculty"),

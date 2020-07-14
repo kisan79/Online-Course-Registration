@@ -64,3 +64,6 @@ class ScheduleBatch(models.Model):
     fee = models.FloatField()
     start_date = models.DateField(default=timezone.now)
     time = models.TimeField()
+
+    def __str__(self):
+        return self.course_name.name
