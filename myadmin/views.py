@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from .forms import *
 from .models import AdminLoginModel,CourseType,Course
 from django.contrib import messages
+from django.views.generic.base import View
+from faculty.forms import *
 
 
 def admin_login(request):
@@ -87,3 +89,29 @@ def schedule_new_batches(request):
         "ScheduleBatchForm":ScheduleBatchForm()
     }
     return render(request,"myadmin/schedule_new_batches.html",context=context)
+
+# Faculty Operation
+
+
+class FacultyOperation(View):
+
+
+    def get(self,request):
+        context = {
+            "FacultyForm":FacultyForm()
+        }
+        return render(request,"myadmin/faculty.html",context=context)
+
+
+    def post(self,request):
+        """Save Faculty Operation"""
+        ff = FacultyForm(request.POST,request.FILES)
+        if ff.is_valid():
+            ff.save()
+            messages.success(request,"Faculty Saved Successfully")
+            return redirect("myadmin:faculty")
+        else:
+            context = {
+                "FacultyForm": ff,
+            }
+            return render(request,"myadmin/faculty.html",context=context)

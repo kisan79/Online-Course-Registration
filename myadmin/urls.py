@@ -15,5 +15,8 @@ urlpatterns = [
     path('save_course/',views.save_course,name = "save_course"),
 
     # Admin Schedule Operations
-    path('schedule_new_batches/',views.schedule_new_batches,name = "schedule_new_batches")
+    path('schedule_new_batches/',views.schedule_new_batches,name = "schedule_new_batches"),
+
+    # Admin Faculty operation
+    path('faculty/',views.FacultyOperation.as_view(),name ="faculty"),
 ]

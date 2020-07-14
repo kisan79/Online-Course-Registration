@@ -1,0 +1,62 @@
+{% extends 'myadmin/base.html' %}
+{% block title%}Success{% endblock title %}
+{% block style %}
+
+{% endblock style %}
+
+
+{% block common %}
+
+    {% if request.session.status %}
+
+        {% include 'myadmin/navbar.html' %}
+        <section id="course" class="container">
+            <div class="row text-center my-5 p-4">
+
+                {% for msg in messages %}
+                    <div class="offset-3 col-6">
+                        <label class="alert alert-success">{{ msg }}</label>
+                    </div>
+                {% endfor %}
+
+                <!--Faculty Form Start Here-->
+
+                <div class="offset-1 col-4 bg-light p-4">
+                    <h3 class="bg-warning text-info">Add Faculty</h3>
+                    <form class="form-group my-5" action="{% url 'myadmin:faculty' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ FacultyForm.as_p }}
+                        <div class="btn-group btn-toolbar">
+                            <button type="submit" class="btn btn-success">ADD</button>
+                            <button type="reset" class="btn btn-danger">RESET</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!--Faculty Form End Here-->
+
+                <!--View Faculty Start Here-->
+
+                <div class="offset-1 col-6 bg-light p-4">
+                    <h3 class="bg-warning text-info">View Faculty</h3>
+
+
+
+                </div>
+                <!--View Faculty End Here-->
+
+            </div>
+        </section>
+
+    {% else %}
+
+
+        {{ block.super }}
+        <div class="jumbotron jumbotron-fluid text-center">
+            <h2 class="display-4">Session Expired !!!</h2>
+            <a href="{% url 'myadmin:admin_login' %}" class="btn btn-warning">Login Again</a>
+        </div>
+
+    {% endif %}
+
+{% endblock common %}
