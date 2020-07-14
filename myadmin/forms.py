@@ -84,16 +84,30 @@ class CourseForm(forms.ModelForm):
 
 class ScheduleBatchForm(forms.ModelForm):
     BATCH_CHOICES = (
-        ("Class Room Training","CT"),
-        ("Online Training","OT"),
-        ("Weekend Training","WT"),
-        ("Special Batch","SB"),
-        ("Job Placement","JP")
+        ("CT","Class Room Training"),
+        ("OT","Online Training"),
+        ("WT","Weekend Training"),
+        ("SB","Special Batch"),
+        ("JP","Job Placement")
     )
     class Meta:
         model = ScheduleBatch
         fields = "__all__"
         exclude = ("idno",)
+        widgets ={
+            "time":forms.TimeInput(
+                attrs={
+                    "type":"time",
+                    "class":"form-control-lg"
+                },
+                                   ),
+            "start_date":forms.DateInput(
+                attrs={
+                    "class":"form-control-lg",
+                    "type":"date"
+                },
+            )
+        }
     batch_type = forms.ChoiceField(
         choices=BATCH_CHOICES,
         label="Type",
@@ -103,6 +117,7 @@ class ScheduleBatchForm(forms.ModelForm):
             }
         )
     )
+
 
     fee = forms.FloatField(
         widget=forms.NumberInput(
