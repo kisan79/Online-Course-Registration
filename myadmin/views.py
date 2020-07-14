@@ -84,11 +84,21 @@ def save_course(request):
 # Schedule New Batch
 
 
-def schedule_new_batches(request):
-    context ={
-        "ScheduleBatchForm":ScheduleBatchForm()
-    }
-    return render(request,"myadmin/schedule_new_batches.html",context=context)
+class ScheduleNewBatch(View):
+    def get(self,request):
+        context = {
+            "ScheduleBatchForm": ScheduleBatchForm()
+        }
+        return render(request, "myadmin/schedule_new_batches.html", context=context)
+    def post(self,request):
+        sbf = ScheduleBatchForm(request.POST)
+        if sbf.is_valid():
+            sbf.save()
+            messages.success(request,"New Batch Scheduled")
+            return redirect('myadmin:schedule_new_batches')
+        else:
+            return render(request,"myadmin/schedule_new_batches.html",context={"ScheduleBatchForm":sbf})
+
 
 # Faculty Operation
 

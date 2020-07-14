@@ -14,7 +14,7 @@
         <div class="row text-center">
             <div class="offset-md-3 col-md-6 bg-light p-4">
                 <h3 class="bg-success">SCHEDULE NEW BATCH</h3>
-                <form class="form-group my-4 p-4" action="#" method="post">
+                <form class="form-group my-4 p-4" action="{% url 'myadmin:schedule_new_batches' %}" method="post">
                     {% csrf_token %}
                     {{ ScheduleBatchForm.as_p }}
                     <div class="btn-group btn-toolbar my-3 p-4">
@@ -22,7 +22,7 @@
                         <button type="reset" class="btn btn-outline-danger">RESET</button>
                     </div>
                     {% for msg in messages %}
-                        <label class="alert alert-danger">{{ msg }}</label>
+                        <label class="alert alert-success">{{ msg }}</label>
                     {% endfor %}
 
                 </form>
