@@ -84,11 +84,11 @@ class CourseForm(forms.ModelForm):
 
 class ScheduleBatchForm(forms.ModelForm):
     BATCH_CHOICES = (
-        ("CT","Class Room Training"),
-        ("OT","Online Training"),
-        ("WT","Weekend Training"),
-        ("SB","Special Batch"),
-        ("JP","Job Placement")
+        ("Class Room Training","Class Room Training"),
+        ("Online Training","Online Training"),
+        ("Weekend Training","Weekend Training"),
+        ("Special Batch","Special Batch"),
+        ("Job Placement","Job Placement")
     )
     class Meta:
         model = ScheduleBatch
