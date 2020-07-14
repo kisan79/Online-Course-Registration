@@ -85,7 +85,9 @@ class CourseForm(forms.ModelForm):
     fee = forms.FloatField(
         widget=forms.NumberInput(
             attrs={
-                "class":"form-control-lg"
+                "class":"form-control-lg",
+                "step":0.01,
+                "min":0
             }
         )
     )
