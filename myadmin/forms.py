@@ -82,12 +82,35 @@ class CourseForm(forms.ModelForm):
         )
     )
 
-    fee = forms.FloatField(
-        widget=forms.NumberInput(
+class ScheduleBatchForm(forms.ModelForm):
+    BATCH_CHOICES = (
+        ("Class Room Training","CT"),
+        ("Online Training","OT"),
+        ("Weekend Training","WT"),
+        ("Special Batch","SB"),
+        ("Job Placement","JP")
+    )
+    class Meta:
+        model = ScheduleBatch
+        fields = "__all__"
+        exclude = ("idno",)
+    batch_type = forms.ChoiceField(
+        choices=BATCH_CHOICES,
+        label="Type",
+        widget=forms.Select(
             attrs={
-                "class":"form-control-lg",
-                "step":0.01,
-                "min":0
+                "class":"form-control"
             }
         )
     )
+
+    fee = forms.FloatField(
+        widget=forms.NumberInput(
+            attrs={
+                "class": "form-control-lg",
+                "step": 0.01,
+                "min": 0
+            }
+        )
+    )
+

@@ -77,3 +77,13 @@ def save_course(request):
             return redirect('myadmin:add_course')
         else:
             return render(request,"myadmin/add_course.html",context={'CourseForm':cf})
+
+
+# Schedule New Batch
+
+
+def schedule_new_batches(request):
+    context ={
+        "ScheduleBatchForm":ScheduleBatchForm()
+    }
+    return render(request,"myadmin/schedule_new_batches.html",context=context)

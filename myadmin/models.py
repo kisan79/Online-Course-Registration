@@ -1,4 +1,7 @@
 from django.db import models
+from django.utils import timezone
+
+from faculty.models import Faculty
 
 # Common Register Model
 
@@ -34,6 +37,7 @@ class CourseType(models.Model):
     idno = models.AutoField(primary_key=True)
     name = models.CharField(max_length=40, unique=True)
     pic = models.ImageField(blank=True, upload_to="coursetype_logo/")
+
     def __str__(self):
         return self.name
 
@@ -46,4 +50,16 @@ class Course(models.Model):
     name = models.CharField(max_length=40,unique=True)
     pic = models.ImageField(blank=True, upload_to="course_pics/")
     type = models.ManyToManyField(CourseType)
+
+# Schedule Batch Model
+
+
+class ScheduleBatch(models.Model):
+    idno = models.AutoField(primary_key=True)
+    course_name = models.ForeignKey(Course,on_delete=models.CASCADE)
+    faculty_name = models.ForeignKey(Faculty,on_delete=models.CASCADE)
+    batch_type = models.CharField(max_length=50)
+    duration = models.IntegerField()
     fee = models.FloatField()
+    start_date = models.DateField(default=timezone.now)
+    time = models.TimeField()
