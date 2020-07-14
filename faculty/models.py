@@ -17,3 +17,5 @@ class Faculty(models.Model):
     address = models.TextField()
     joined_date = models.DateField(auto_now=True)
     pic = models.ImageField(blank=True, upload_to="faculty_pics/")
+    def __str__(self):
+        return self.first_name

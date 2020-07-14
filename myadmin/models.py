@@ -36,7 +36,6 @@ class CourseType(models.Model):
     '''Different Trending Types Of Courses'''
     idno = models.AutoField(primary_key=True)
     name = models.CharField(max_length=40, unique=True)
-    pic = models.ImageField(blank=True, upload_to="coursetype_logo/")
 
     def __str__(self):
         return self.name
@@ -50,6 +49,8 @@ class Course(models.Model):
     name = models.CharField(max_length=40,unique=True)
     pic = models.ImageField(blank=True, upload_to="course_pics/")
     type = models.ManyToManyField(CourseType)
+    def __str__(self):
+        return self.name
 
 # Schedule Batch Model
 

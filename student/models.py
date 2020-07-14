@@ -6,3 +6,5 @@ from myadmin.models import CommonModel
 
 class Student(CommonModel):
     pic = models.ImageField(blank=True, upload_to="student_pics/")
+    def __str__(self):
+        return self.first_name
