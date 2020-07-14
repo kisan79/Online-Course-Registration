@@ -39,7 +39,7 @@
 
                 <div class="offset-1 col-5 bg-light p-4">
                     <h3 class="bg-warning text-info">Add Course</h3>
-                    <form class="form-group my-5" action="#" method="post" enctype="multipart/form-data">
+                    <form class="form-group my-5" action="{% url 'myadmin:save_course' %}" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{ CourseForm.as_p }}
                         <div class="btn-group btn-toolbar">

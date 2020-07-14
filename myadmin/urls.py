@@ -12,4 +12,5 @@ urlpatterns = [
     #Admin Course Operations
     path('add_course/',views.add_course,name = "add_course"),
     path('save_course_type/',views.add_course,name = "save_course_type"),
+    path('save_course/',views.save_course,name = "save_course"),
 ]

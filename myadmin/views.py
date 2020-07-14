@@ -66,3 +66,14 @@ def add_course(request):
         except KeyError:
 
             return render(request, "myadmin/add_course.html")
+
+
+def save_course(request):
+    if request.method == "POST":
+        cf = CourseForm(request.POST,request.FILES)
+        if cf.is_valid():
+            cf.save()
+            messages.success(request, "Course Successfully Saved")
+            return redirect('myadmin:add_course')
+        else:
+            return render(request,"myadmin/add_course.html",context={'CourseForm':cf})
