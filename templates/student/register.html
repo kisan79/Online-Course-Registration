@@ -5,7 +5,7 @@
 <!--Page Body Start Here-->
 {% block body %}
 
-
+    {% include 'navbar.html' %}
     <div class="container my-5">
         <div class="row text-center">
             <div class="offset-md-3 col-md-6 bg-light p-4">
@@ -13,7 +13,7 @@
                 {% for msg in messages %}
                     <label class="alert alert-success">{{ msg }}</label>
                 {% endfor %}
-                <form class="form-group my-4 p-4" action="{% url 'student:register' %}" method="post">
+                <form class="form-group my-4 p-4" action="{% url 'student:register' %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ StudentRegister.as_p }}
                     <div class="btn-group btn-toolbar my-3 p-4">
