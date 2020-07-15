@@ -17,6 +17,7 @@ urlpatterns = [
     path('schedule_new_batches/',views.ScheduleNewBatch.as_view(),name = "schedule_new_batches"),
     path('view_scheduled_batches/',views.ViewScheduledBatches.as_view(),name = "view_scheduled_batches"),
     path('update_batch/<int:pk>',views.UpdateSchedule.as_view(),name = "update_batch"),
+    path('delete_batch/<int:pk>',views.delete_batch,name ="delete_batch"),
 
     # Admin Faculty operation
     path('faculty/',views.FacultyOperation.as_view(),name ="faculty"),

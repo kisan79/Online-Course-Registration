@@ -17,6 +17,12 @@
 
                     <table class="table table-hover table-striped table-responsive-lg">
                         <thead class="thead-light">
+                            {% for msg in messages %}
+                            <tr>
+                            <th colspan="9"><label class="alert alert-success">{{ msg }}</label></th>
+                            </tr>
+                            {% endfor %}
+
                             <tr>
                                 <th>Course</th>
                                 <th>Faculty</th>
@@ -40,7 +46,7 @@
                                 <td>{{ batch.start_date }}</td>
                                 <td>{{ batch.time }}</td>
                                 <td><a href="{% url 'myadmin:update_batch' batch.idno %}" class="btn btn-outline-primary">Update</a></td>
-                                <td><a class="btn btn-outline-danger">Delete</a></td>
+                                <td><a href="{% url 'myadmin:delete_batch' batch.idno %}" class="btn btn-outline-danger">Delete</a></td>
                             </tr>
                             {% endfor %}
                         </tbody>

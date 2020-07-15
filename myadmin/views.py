@@ -115,6 +115,11 @@ class UpdateSchedule(UpdateView):
     form_class = ScheduleBatchForm
     success_url = reverse_lazy("myadmin:view_scheduled_batches")
 
+def delete_batch(request,pk):
+    ScheduleBatch.objects.get(idno=pk).delete()
+    messages.success(request,"Batch Deleted Successfully")
+    return redirect('myadmin:view_scheduled_batches')
+
 
 # Faculty Operation
 
