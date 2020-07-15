@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+<!--Page Title Here-->
+{% block title %}Register-Student{% endblock title %}
+
+<!--Page Body Start Here-->
+{% block body %}
+
+
+    <div class="container my-5">
+        <div class="row text-center">
+            <div class="offset-md-3 col-md-6 bg-light p-4">
+                <h3 class="bg-success">Student Register</h3>
+                {% for msg in messages %}
+                    <label class="alert alert-success">{{ msg }}</label>
+                {% endfor %}
+                <form class="form-group my-4 p-4" action="{% url 'student:register' %}" method="post">
+                    {% csrf_token %}
+                    {{ StudentRegister.as_p }}
+                    <div class="btn-group btn-toolbar my-3 p-4">
+                        <button type="submit" class="btn btn-outline-success">REGISTER</button>
+                        <button type="reset" class="btn btn-outline-danger">RESET</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock body %}
+<!--Page Body End Here-->

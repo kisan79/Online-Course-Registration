@@ -19,12 +19,13 @@ from myadmin import urls as admin_url
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic.base import TemplateView
-
+from student import urls as student_url
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
     path('myadmin/',include(admin_url)) ,
     path('', TemplateView.as_view(template_name="index.html"), name="index"),
+    path('student/',include(student_url)),
 ]
 
 # static function will return a URL pattern for serving files in debug mode
