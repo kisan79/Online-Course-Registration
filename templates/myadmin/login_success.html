@@ -1,4 +1,6 @@
 {% extends 'myadmin/base.html' %}
+{% load static %}
+
 {% block title%}Success{% endblock title %}
 {% block style %}
 
@@ -10,6 +12,14 @@
     {% if request.session.status %}
 
         {% include 'myadmin/navbar.html' %}
+        <div class="container-fluid">
+            <div class="row text-center">
+                <div class="offset-2 col-8">
+                    <h1>Welcome To Admin</h1>
+                    <img src="{% static 'images/matrix-2503236_1920.jpg' %}" class="w-100">
+                </div>
+            </div>
+        </div>
 
     {% else %}
 
