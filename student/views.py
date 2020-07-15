@@ -68,6 +68,13 @@ def student_logout(request):
 
 def view_new_batches(request):
     context = {
-        "ScheduleBatch":ScheduleBatch.objects.all()
+        "ScheduleBatch":ScheduleBatch.objects.all(),
+        "student_data":Student.objects.get(email= request.session['status'])
     }
     return render(request,"student/view_new_batches.html",context=context)
+
+
+def enroll_student(request,batch_id,mobile):
+    BatchEnrollement(batch_id=batch_id,mobile=mobile).save()
+    messages.success(request,"Entrolled Successfully")
+    return redirect('student:view_new_batches')

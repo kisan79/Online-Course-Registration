@@ -11,5 +11,6 @@ urlpatterns = [
 
     # New Batch Enrolement
 
-    path('view_new_batches/',views.view_new_batches,name = "view_new_batches")
+    path('view_new_batches/',views.view_new_batches,name = "view_new_batches"),
+    path('enroll_student/<int:batch_id>/<int:mobile>/',views.enroll_student,name = "enroll_student"),
 ]

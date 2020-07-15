@@ -41,7 +41,7 @@
                                 <td>{{ batch.fee }}</td>
                                 <td>{{ batch.start_date }}</td>
                                 <td>{{ batch.time }}</td>
-                                <td><a href="#" class="btn btn-primary">Enroll</a></td>
+                                <td><a href="{% url 'student:enroll_student' batch.idno student_data.mobile %}" class="btn btn-primary">Enroll</a></td>
                             </tr>
                             {% endfor %}
                         </tbody>
