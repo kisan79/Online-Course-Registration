@@ -55,4 +55,9 @@ def login_success(request):
         obj = Student.objects.get(email= request.session['status'])
         return render(request,"student/login_success.html",context={"student_data":obj})
     except KeyError:
-        return render(request,"student/login.html")
+        return redirect('student:login')
+
+
+def student_logout(request):
+    del request.session['status']
+    return redirect('student:login')
