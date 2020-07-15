@@ -1,0 +1,72 @@
+<!doctype html>
+
+{% load static %}
+
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+
+    <title>{% block title %}E-Learn{% endblock title %}</title>
+
+    <!--Embeded Style-->
+    {% block style %}
+        <style>
+            body{
+                font-family: 'Indie Flower', cursive;
+            }
+        </style>
+    {% endblock style %}
+
+
+  </head>
+
+
+  <body class="container-fluid">
+
+
+  {% block common %}
+
+
+    <section id="header">
+            <h1 class="text-center bg-info text-white">E-Learn</h1>
+    </section>
+
+
+  {% endblock common %}
+
+
+
+  {% block body %}
+
+  {% endblock body %}
+
+
+
+
+    <!--Footer Section Start Here-->
+
+    <section class="container-fluid">
+        <div class="row bg-info">
+            <div class="offset-4 col-6">
+                <strong class="text-center text-white">
+                    <i>&copy;Copyrights | 2020 | By Kisan Kumar Behera</i>
+                </strong>
+            </div>
+        </div>
+    </section>
+
+    <!--Footer Section End Here-->
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.bundle.js' %}"></script>
+  </body>
+</html>
