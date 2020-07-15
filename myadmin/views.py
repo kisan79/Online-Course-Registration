@@ -1,10 +1,13 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
+from django.views.generic import UpdateView
+
 from .forms import *
 from .models import AdminLoginModel,CourseType,Course
 from django.contrib import messages
 from django.views.generic.base import View
 from faculty.forms import *
+from django.urls import reverse_lazy
 
 
 def admin_login(request):
@@ -105,6 +108,12 @@ class ViewScheduledBatches(View):
             "view":ScheduleBatch.objects.all()
         }
         return render(request,"myadmin/view_scheduled_batches.html",context=context)
+
+class UpdateSchedule(UpdateView):
+    template_name = "myadmin/update_batch.html"
+    model = ScheduleBatch
+    form_class = ScheduleBatchForm
+    success_url = reverse_lazy("myadmin:view_scheduled_batches")
 
 
 # Faculty Operation

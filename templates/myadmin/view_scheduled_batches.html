@@ -39,7 +39,7 @@
                                 <td>{{ batch.fee }}</td>
                                 <td>{{ batch.start_date }}</td>
                                 <td>{{ batch.time }}</td>
-                                <td><a class="btn btn-outline-primary">Update</a></td>
+                                <td><a href="{% url 'myadmin:update_batch' batch.idno %}" class="btn btn-outline-primary">Update</a></td>
                                 <td><a class="btn btn-outline-danger">Delete</a></td>
                             </tr>
                             {% endfor %}

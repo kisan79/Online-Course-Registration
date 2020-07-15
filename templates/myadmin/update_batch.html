@@ -1,0 +1,44 @@
+{% extends 'myadmin/base.html' %}
+{% block title%}Success{% endblock title %}
+{% block style %}
+
+{% endblock style %}
+
+
+{% block common %}
+
+    {% if request.session.status %}
+
+        {% include 'myadmin/navbar.html' %}
+        <div class="container my-5">
+        <div class="row text-center">
+            <div class="offset-md-3 col-md-6 bg-light p-4">
+                <h3 class="bg-success">Update Schedule</h3>
+                <form class="form-group my-4 p-4" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="btn-group btn-toolbar my-3 p-4">
+                        <button type="submit" class="btn btn-outline-success">Update</button>
+                        <button type="reset" class="btn btn-outline-danger">RESET</button>
+                    </div>
+                    {% for msg in messages %}
+                        <label class="alert alert-success">{{ msg }}</label>
+                    {% endfor %}
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {% else %}
+
+
+        {{ block.super }}
+        <div class="jumbotron jumbotron-fluid text-center">
+            <h2 class="display-4">Session Expired !!!</h2>
+            <a href="{% url 'myadmin:admin_login' %}" class="btn btn-warning">Login Again</a>
+        </div>
+
+    {% endif %}
+
+{% endblock common %}
