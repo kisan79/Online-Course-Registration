@@ -24,7 +24,7 @@
         {{ block.super }}
         <div class="jumbotron jumbotron-fluid text-center">
             <h2 class="display-4">Session Expired !!!</h2>
-            <a href="{% url 'myadmin:admin_login' %}" class="btn btn-warning">Login Again</a>
+            <a href="{% url 'student:login' %}" class="btn btn-warning">Login Again</a>
         </div>
 
     {% endif %}
