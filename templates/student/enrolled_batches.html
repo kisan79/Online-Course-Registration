@@ -9,46 +9,61 @@
         {% include 'student/navbar.html' %}
         <div class="container-fluid my-5">
         <div class="row text-center">
-            <div class="offset-1 col-10 bg-light p-4">
+            <div class=" col-12 bg-light p-4">
                 <h3 class="bg-success">Enrolled Batches | Course Schedule | Batch Timings</h3>
 
-                    <table class="table table-hover table-striped table-responsive-lg">
+                    <table class="table table-hover table-responsive-lg">
                         <thead class="thead-light">
                             {% for msg in messages %}
                             <tr>
-                            <th colspan="2"><label class="alert alert-success">{{ msg }}</label></th>
+                            <th colspan="9"><label class="alert alert-success">{{ msg }}</label></th>
                             </tr>
                             {% endfor %}
+                            <tr>
+                                <th rowspan="2">Enroll</th>
+
+                            </tr>
 
                             <tr>
                                 <th>Batch ID</th>
                                 <th>Enrolled Courses</th>
-                                <th>Faculty Name</th>
+                                <th>Faculty</th>
                                 <th>Start Date</th>
                                 <th>Time</th>
                                 <th>Duration</th>
                                 <th>Mode</th>
                                 <th>Fee</th>
-                                <th>Enroll</th>
-                                <th>Payment</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <tr>
+                                <td rowspan="{{ BE.values_list.count|add:'2' }}">
+
+
+                                    <table>
+                                        {% for x in BE %}
+                                            <tr>
+                                                <td><a  href="{% url 'student:cancel_registration' x.id %}" class="btn btn-link btn-warning">Cancel</a></td>
+                                            </tr>
+                                        {% endfor %}
+
+                                    </table>
+                                </td>
+                            </tr>
                             {% for batch in BatchEnrollement %}
                             <tr>
                                 {% for field in batch %}
 
                                     <td>{{ field }}</td>
-
                                 {% endfor %}
-                                    <td><a class="btn btn-link btn-warning">Cancel</a></td>
-                                    <td ><a class="btn btn-link btn-info">Pending</a></td>
                             </tr>
                             {% endfor %}
-                        </tbody>
-                        <tfoot></tfoot>
-                    </table>
 
+                        </tbody>
+                        <tfoot>
+
+                        </tfoot>
+                    </table>
 
             </div>
         </div>

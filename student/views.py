@@ -89,7 +89,14 @@ def enrolled_batches(request):
             [batch.batch_id,s.course_name,s.faculty_name,s.start_date,s.time,s.duration,s.batch_type,s.fee]
             for batch in BatchEnrollement.objects.all() for s in ScheduleBatch.objects.all() if batch.batch_id == s.idno
         ],
+        "BE":BatchEnrollement.objects.all()
     }
     print(context["BatchEnrollement"])
 
     return render(request,"student/enrolled_batches.html",context=context)
+
+
+def cancel_registration(request,batch_id):
+    BatchEnrollement.objects.get(id=batch_id).delete()
+    messages.success(request,"Registration Cancelled Successfully")
+    return redirect('student:enrolled_batches')
