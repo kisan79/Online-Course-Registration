@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.views.generic.base import View
 from .forms import *
 from  .models import *
+from myadmin.models import ScheduleBatch
 from django.contrib import messages
 
 # Create your views here.
@@ -61,3 +62,12 @@ def login_success(request):
 def student_logout(request):
     del request.session['status']
     return redirect('student:login')
+
+# New Batch Enrolement
+
+
+def view_new_batches(request):
+    context = {
+        "ScheduleBatch":ScheduleBatch.objects.all()
+    }
+    return render(request,"student/view_new_batches.html",context=context)
