@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+<!--Page Title Here-->
+{% block title %}Student_Login{% endblock title %}
+
+<!--Page Body Start Here-->
+{% block body %}
+
+    {% include 'navbar.html' %}
+    <div class="container my-5">
+        <div class="row text-center">
+            <div class="offset-md-3 col-md-6 bg-light p-4">
+                <h3 class="bg-success">STUDENT LOGIN </h3>
+                <form class="form-group my-4 p-4" action="{% url 'student:login' %}" method="post">
+                    {% csrf_token %}
+                    {{ StudentLoginForm.as_p }}
+                    <div class="btn-group btn-toolbar my-3 p-4">
+                        <button type="submit" class="btn btn-outline-success">LOGIN</button>
+                        <button type="reset" class="btn btn-outline-danger">RESET</button>
+                    </div>
+                    {% for msg in messages %}
+                        <label class="alert alert-danger">{{ msg }}</label>
+                    {% endfor %}
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock body %}
+<!--Page Body End Here-->

@@ -8,9 +8,12 @@
             </button>
 
             <ul class="collapse navbar-nav navbar-collapse" id="navbarContent">
-                <li class="nav-item"><a href="{% url 'student:register' %}" class="nav-link">Register</a></li>
-                <li class="nav-item"><a href="{% url 'student:login' %}" class="nav-link">Login</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">New Batches</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Contact Us</a></li>
+
+                <li class="nav-item"><a class="nav-link">{{ student_data.username|capfirst }}</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Enroll A Batch</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">View Enrolled Batch</a></li>
+                <li class="nav-item"><a class="nav-link">Courses Available</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Logout</a></li>
+
             </ul>
         </nav>

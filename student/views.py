@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.views.generic.base import View
-from .forms import StudentRegister
+from .forms import *
+from  .models import *
 from django.contrib import messages
 
 # Create your views here.
@@ -24,3 +25,34 @@ class Register(View):
             return redirect('student:register')
         else:
             return render(request,"student/register.html",context={"StudentRegister":sr})
+
+
+class Login(View):
+    """ Performs Student Login and Session Creation """
+
+    def get(self, request):
+        """Showing Student Login Form"""
+        context = {
+            "StudentLoginForm": StudentLoginForm()
+        }
+        return render(request, "student/login.html", context=context)
+
+    def post(self, request):
+        """Performs Session Creation on Successful Login"""
+        username = request.POST['username']
+        password = request.POST['password']
+        try:
+            obj = Student.objects.get(username=username, password=password)
+            request.session['status'] = obj.email
+            return redirect('student:login_success')
+        except Student.DoesNotExist:
+            messages.error(request, "Invalid Credentials")
+            return redirect('student:login')
+
+
+def login_success(request):
+    try:
+        obj = Student.objects.get(email= request.session['status'])
+        return render(request,"student/login_success.html",context={"student_data":obj})
+    except KeyError:
+        return render(request,"student/login.html")
