@@ -85,7 +85,10 @@ def enroll_student(request,batch_id,mobile):
 
 def enrolled_batches(request):
     context = {
-        "BatchEnrollement": [ [s.course_name,s.faculty_name,s.start_date,s.time,s.duration,s.batch_type,s.fee] for batch in BatchEnrollement.objects.all() for s in ScheduleBatch.objects.all() if batch.batch_id == s.idno ],
+        "BatchEnrollement": [
+            [batch.batch_id,s.course_name,s.faculty_name,s.start_date,s.time,s.duration,s.batch_type,s.fee]
+            for batch in BatchEnrollement.objects.all() for s in ScheduleBatch.objects.all() if batch.batch_id == s.idno
+        ],
     }
     print(context["BatchEnrollement"])
 
