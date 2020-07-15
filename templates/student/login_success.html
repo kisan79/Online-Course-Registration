@@ -13,7 +13,9 @@
             <div class="row text-center">
                 <div class="offset-2 col-8">
                     <h1>Welcome To {{ student_data.first_name }}</h1>
-                    <img src="{{ student_data.pic.url }}" class="h-55 w-50">
+                    {% if student_data.pic %}
+                        <img src="{{ student_data.pic.url }}" class="h-55 w-50">
+                    {% endif %}
                 </div>
             </div>
         </div>
