@@ -13,4 +13,5 @@ urlpatterns = [
 
     path('view_new_batches/',views.view_new_batches,name = "view_new_batches"),
     path('enroll_student/<int:batch_id>/<int:mobile>/',views.enroll_student,name = "enroll_student"),
+    path('enrolled_batches/',views.enrolled_batches,name = "enrolled_batches"),
 ]

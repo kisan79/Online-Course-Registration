@@ -81,3 +81,12 @@ def enroll_student(request,batch_id,mobile):
     BatchEnrollement(batch_id=batch_id,mobile=mobile).save()
     messages.success(request,"Entrolled Successfully")
     return redirect('student:view_new_batches')
+
+
+def enrolled_batches(request):
+    context = {
+        "BatchEnrollement": [ [s.course_name,s.faculty_name,s.start_date,s.time,s.duration,s.batch_type,s.fee] for batch in BatchEnrollement.objects.all() for s in ScheduleBatch.objects.all() if batch.batch_id == s.idno ],
+    }
+    print(context["BatchEnrollement"])
+
+    return render(request,"student/enrolled_batches.html",context=context)

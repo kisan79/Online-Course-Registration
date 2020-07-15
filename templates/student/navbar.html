@@ -11,7 +11,7 @@
 
                 <li class="nav-item"><a class="nav-link">{{ student_data.username|capfirst }}</a></li>
                 <li class="nav-item"><a href="{% url 'student:view_new_batches' %}" class="nav-link">New Batch</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">View Enrolled Batch</a></li>
+                <li class="nav-item"><a href="{% url 'student:enrolled_batches' %}" class="nav-link">View Enrolled Batch</a></li>
                 <li class="nav-item"><a class="nav-link">Courses Available</a></li>
                 <li class="nav-item"><a href="{% url 'student:logout' %}" class="nav-link">Logout</a></li>
 
