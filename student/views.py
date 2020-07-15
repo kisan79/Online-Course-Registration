@@ -67,11 +67,14 @@ def student_logout(request):
 
 
 def view_new_batches(request):
-    context = {
-        "ScheduleBatch":ScheduleBatch.objects.all(),
-        "student_data":Student.objects.get(email= request.session['status'])
-    }
-    return render(request,"student/view_new_batches.html",context=context)
+    try:
+        context = {
+            "ScheduleBatch":ScheduleBatch.objects.all(),
+            "student_data":Student.objects.get(email= request.session['status'])
+         }
+        return render(request,"student/view_new_batches.html",context=context)
+    except KeyError:
+        return redirect('student:login_success')
 
 
 def enroll_student(request,batch_id,mobile):
