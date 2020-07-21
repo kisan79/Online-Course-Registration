@@ -20,4 +20,5 @@ urlpatterns = [
 
     path('check-username/',views.checkUsername),
     path('check-mobile/',views.checkMobile),
+    path('check-email/',views.check_email),
 ]

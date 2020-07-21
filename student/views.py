@@ -39,7 +39,7 @@ class Register(View):
 @method_decorator(csrf_exempt,name='dispatch')
 def checkUsername(request):
     name = request.POST.get('inputValue')
-    print(name)
+    # print(name)
     try:
         Student.objects.get(username=name)
         res = {"error":"( Username Already Taken )"}
@@ -54,12 +54,27 @@ def checkUsername(request):
 @csrf_exempt
 def checkMobile(request):
     mobile = request.POST.get('inputValue')
-    print(mobile)
+    # print(mobile)
     try:
         Student.objects.get(mobile=mobile)
         res = {"error":"( This Number Already Registered )"}
     except Student.DoesNotExist:
         res = {"success":"( Contact number Available )"}
+    # print(res)
+    return JsonResponse(res)
+
+# Email Checking
+
+
+@csrf_exempt
+def check_email(request):
+    email = request.POST.get('inputValue')
+    # print(email)
+    try:
+        Student.objects.get(email=email)
+        res = {"error":"( This Email-ID is already Registered )"}
+    except Student.DoesNotExist:
+        res = {"success":"( Mail-ID Available )"}
     # print(res)
     return JsonResponse(res)
 
