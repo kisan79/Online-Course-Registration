@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 <!--Page Title Here-->
 {% block title %}Register-Student{% endblock title %}
 
@@ -6,18 +7,46 @@
 {% block body %}
 
     {% include 'navbar.html' %}
-    <div class="container my-5">
+    <div class="container-fluid my-5">
         <div class="row text-center">
-            <div class="offset-md-3 col-md-6 bg-light p-4">
+            <div class="offset-2 col-8 bg-light p-4">
                 <h3 class="bg-success">Student Register</h3>
                 {% for msg in messages %}
                     <label class="alert alert-success">{{ msg }}</label>
                 {% endfor %}
                 <form class="form-group my-4 p-4" action="{% url 'student:register' %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
-                    {{ StudentRegister.as_p }}
+                    <dl>
+                        <dt>{{ StudentRegister.first_name.label }} :</dt>
+                        <dd>{{ StudentRegister.first_name }}</dd>
+
+                        <dt>{{ StudentRegister.last_name.label }} :</dt>
+                        <dd>{{ StudentRegister.last_name }}</dd>
+
+                        <dt>{{ StudentRegister.username.label }} :</dt>
+                        <dd>{{ StudentRegister.username }}</dd>
+                           <dd id="msgUsername"></dd>
+
+                        <dt>{{ StudentRegister.password.label }} :</dt>
+                        <dd>{{ StudentRegister.password }}</dd>
+
+                        <dt>{{ StudentRegister.mobile.label }} :</dt>
+                        <dd>{{ StudentRegister.mobile }}</dd>
+                                <dd id="msgMobile"></dd>
+
+                        <dt>{{ StudentRegister.email.label }} :</dt>
+                        <dd>{{ StudentRegister.email }}</dd>
+                                <dd id="msgEmail"></dd>
+
+                        <dt>{{ StudentRegister.address.label }} :</dt>
+                        <dd>{{ StudentRegister.address }}</dd>
+
+                        <dt>{{ StudentRegister.pic.label }} :</dt>
+                        <dd>{{ StudentRegister.pic }}</dd>
+                    </dl>
+
                     <div class="btn-group btn-toolbar my-3 p-4">
-                        <button type="submit" class="btn btn-outline-success">REGISTER</button>
+                        <button type="submit" id='btnSubmit' class="btn btn-outline-success">REGISTER</button>
                         <button type="reset" class="btn btn-outline-danger">RESET</button>
                     </div>
                 </form>
@@ -25,6 +54,8 @@
         </div>
     </div>
 
+    <!--Javascript File-->
+    <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
 
 {% endblock body %}
 <!--Page Body End Here-->

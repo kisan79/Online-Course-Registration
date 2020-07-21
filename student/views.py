@@ -1,7 +1,11 @@
+from django.http import JsonResponse,HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+
 from django.shortcuts import render,redirect
 from django.views.generic.base import View
 from .forms import *
-from  .models import *
+from .models import *
 from myadmin.models import ScheduleBatch
 from django.contrib import messages
 
@@ -27,6 +31,19 @@ class Register(View):
         else:
             return render(request,"student/register.html",context={"StudentRegister":sr})
 
+# username Checking
+
+@method_decorator(csrf_exempt,name='dispatch')
+def checkUsername(request):
+    name = request.POST.get('inputValue')
+    print(name)
+    try:
+        Student.objects.get(username=name)
+        res = {"error":"( Username Already Taken )"}
+    except Student.DoesNotExist:
+        res = {"success":"( Username Available )"}
+    # print(res)
+    return JsonResponse(res)
 
 class Login(View):
     """ Performs Student Login and Session Creation """

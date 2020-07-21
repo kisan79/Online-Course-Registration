@@ -15,4 +15,8 @@ urlpatterns = [
     path('enroll_student/<int:batch_id>/<int:mobile>/',views.enroll_student,name = "enroll_student"),
     path('enrolled_batches/',views.enrolled_batches,name = "enrolled_batches"),
     path('cancel_registration/<int:batch_id>',views.cancel_registration,name = "cancel_registration"),
+
+    # Ajax Call
+
+    path('check-username/',views.checkUsername)
 ]

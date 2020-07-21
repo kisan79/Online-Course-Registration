@@ -8,6 +8,18 @@ class StudentRegister(forms.ModelForm):
     class Meta:
         model = Student
         fields = "__all__"
+        widgets ={
+            "username":forms.TextInput(
+                attrs={
+                    "onblur":"ajaxCall('id_username','http://127.0.0.1:8000/student/check-username/','msgUsername')",
+                }
+            ),
+            "mobile":forms.NumberInput(
+                attrs={
+                    "type":"tel",
+                }
+            )
+        }
 
 
 # Student login form
