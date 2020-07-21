@@ -1,5 +1,10 @@
 var btn = document.getElementById('btnSubmit');
-function ajaxCall(inputId,url_path,msgId) {
+
+
+function ajaxCall(inputId,url_path,msgId)
+    {
+
+
             let textInput = document.getElementById(inputId).value;
             let msgSpan = document.getElementById(msgId);
             // console.log(textInput);
@@ -34,4 +39,4 @@ function ajaxCall(inputId,url_path,msgId) {
             xhr.send(val);
 
 
-        }
+    }
