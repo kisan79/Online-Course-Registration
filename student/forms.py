@@ -17,6 +17,7 @@ class StudentRegister(forms.ModelForm):
             "mobile":forms.NumberInput(
                 attrs={
                     "type":"tel",
+                    "onblur": "ajaxCall('id_mobile','http://127.0.0.1:8000/student/check-mobile/','msgMobile')",
                 }
             )
         }

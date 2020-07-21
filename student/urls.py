@@ -18,5 +18,6 @@ urlpatterns = [
 
     # Ajax Call
 
-    path('check-username/',views.checkUsername)
+    path('check-username/',views.checkUsername),
+    path('check-mobile/',views.checkMobile),
 ]

@@ -31,7 +31,10 @@ class Register(View):
         else:
             return render(request,"student/register.html",context={"StudentRegister":sr})
 
+# Ajax Call Functions
+
 # username Checking
+
 
 @method_decorator(csrf_exempt,name='dispatch')
 def checkUsername(request):
@@ -44,6 +47,22 @@ def checkUsername(request):
         res = {"success":"( Username Available )"}
     # print(res)
     return JsonResponse(res)
+
+# Mobile Checking
+
+
+@csrf_exempt
+def checkMobile(request):
+    mobile = request.POST.get('inputValue')
+    print(mobile)
+    try:
+        Student.objects.get(mobile=mobile)
+        res = {"error":"( This Number Already Registered )"}
+    except Student.DoesNotExist:
+        res = {"success":"( Contact number Available )"}
+    # print(res)
+    return JsonResponse(res)
+
 
 class Login(View):
     """ Performs Student Login and Session Creation """
