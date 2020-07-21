@@ -7,6 +7,8 @@
 {% block body %}
 
     {% include 'navbar.html' %}
+    <!--Container For the Form-->
+
     <div class="container-fluid my-5">
         <div class="row text-center">
             <div class="offset-2 col-8 bg-light p-4">
@@ -14,6 +16,9 @@
                 {% for msg in messages %}
                     <label class="alert alert-success">{{ msg }}</label>
                 {% endfor %}
+
+            <!--Registration Form-->
+
                 <form class="form-group my-4 p-4" action="{% url 'student:register' %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <dl>
@@ -46,8 +51,8 @@
                     </dl>
 
                     <div class="btn-group btn-toolbar my-3 p-4">
-                        <button type="submit" id='btnSubmit' class="btn btn-outline-success">REGISTER</button>
-                        <button type="reset" class="btn btn-outline-danger">RESET</button>
+                        <button type="submit" id='btnSubmit' class="btn btn-success">REGISTER</button>
+                        <button type="reset" class="btn btn-danger">RESET</button>
                     </div>
                 </form>
             </div>
